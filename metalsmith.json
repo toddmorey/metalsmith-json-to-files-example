@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "title": "Ablums Example",
+    "description": "A quick example of using metalsmith-json-to-files."
+  },
+  "plugins": {
+    "metalsmith-json-to-files": {
+      "source_path": "./json/"
+    },
+    "metalsmith-collections": {
+  	   "albums": {}
+  	},
+    "metalsmith-permalinks": {
+      "pattern": ":title",
+      "relative": false
+    },
+    "metalsmith-layouts": {
+      "engine": "handlebars"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "metalsmith-json-to-files-example",
+  "version": "1.0.0",
+  "description": "an example of metalsmith-json-to-files in use",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Todd Morey",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "metalsmith": "^2.1.0",
+    "metalsmith-collections": "^0.7.0",
+    "metalsmith-json-to-files": "0.0.4",
+    "metalsmith-layouts": "^1.4.2",
+    "metalsmith-paths": "^2.1.1",
+    "metalsmith-permalinks": "^0.4.1"
+  }
+}

@@ -34,8 +34,8 @@ Even though `metalsmith-json-to-files` will work on it's own, the best results c
     "engine": "handlebars"
   }
 ```
-1. `metalsmith-json-to-files` is called first. As the plugin runs, it will add new files (pages) which are passed on to the other plugins.
-2. `metalsmith-collections` is used to create a global array of the pages created by json-to-files. This is important because it's what will be used to build an index of the pages created. If you look at the list.html layout, you'll see an index being built by looping over the collection: `{{#each collections.albums}}`.
+1. `metalsmith-json-to-files` is called first. As the plugin runs, it will parse the json source (`json/ablums.json`) to create virtual files (pages) which are then passed on to the other plugins.
+2. `metalsmith-collections` is used to group the pages created by step 1 into a collection which will be available globally. This allows us to refer to the collection on any page of the site (handy for building index pages). If you look at the `layouts/list.html` layout template, you'll see an index page being built by looping over the collection: `{{#each collections.albums}}`.
 3. `metalsmith-permalinks` is used in part to create pretty URLS, but most importantly because this plugin adds a `path` variable to each file that can be used as it's URL in templates.
 4. `metalsmith-layouts` is used for rendering each page. Two layout examples are provided: one for a list display and one for each item.
 
@@ -45,7 +45,7 @@ You can see the sample json file `ablums.json` in the json folder. The metalsmit
 
 ## Creating a collection
 
-Five total pages will be generated, but only one file is needed in the source directory (the rest are dynamically created by `metalsmith-json-to-files`). The file `src/ablums` defines the parameters for how you want the pages to be created: the specific json source file to use, the name of the collection, and the templates for the index page as well as the page for each entry.
+Only one source file is needed, `src/ablums`. It provides parameters for how the new pages should be created: the specific json source file to use, the name of the collection, and the layout templates for the index page and each entry.
 
 ```yaml
 ---
@@ -55,7 +55,7 @@ json_files:
     source_file: albums # defines the json file that will be used for the data
     filename_pattern: albums/:data.title # defines the url scheme for the generated files
     as_permalink: true
-    layout: single.html # the layout that will be used for each entry
+    layout: single.html # the layout that will be used to render each entry
     collection: albums # the name of the collection (used on the template for the index page)
 ---
 ```
